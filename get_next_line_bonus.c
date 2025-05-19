@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrouchy <hrouchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 10:53:17 by hrouchy           #+#    #+#             */
-/*   Updated: 2025/05/19 11:00:35 by hrouchy          ###   ########.fr       */
+/*   Created: 2025/05/19 11:07:03 by hrouchy           #+#    #+#             */
+/*   Updated: 2025/05/19 13:58:11 by hrouchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
+#include <limits.h>
 
 char	*get_next_line(int fd)
 {
-	static char	*static_str;
+	static char	*static_str[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (read(fd, 0, 0) == -1)
 	{
-		if (static_str)
+		if (static_str[fd])
 		{
-			free(static_str);
-			static_str = NULL;
+			free(static_str[fd]);
+			static_str[fd] = NULL;
 		}
 		return (NULL);
 	}
-	static_str = ft_read(fd, static_str);
-	if (!static_str)
+	static_str[fd] = ft_read(fd, static_str[fd]);
+	if (!static_str[fd])
 		return (NULL);
-	line = ft_line(static_str);
-	static_str = ft_clean(static_str);
+	line = ft_line(static_str[fd]);
+	static_str[fd] = ft_clean(static_str[fd]);
 	return (line);
 }
 

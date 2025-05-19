@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrouchy <hrouchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:53:35 by hrouchy           #+#    #+#             */
-/*   Updated: 2025/05/19 10:55:37 by hrouchy          ###   ########.fr       */
+/*   Updated: 2025/05/19 13:04:04 by hrouchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 
 int	ft_strlen(const char *str)
@@ -56,7 +56,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	str_join = malloc(ft_strlen(s1) + ft_strlen(s2)+1);
+	str_join = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str_join)
 		return (NULL);
 	str_join[0] = '\0';
@@ -85,5 +85,10 @@ char	*ft_free(char *buffer, char *buf)
 
 	temp = ft_strjoin(buffer, buf);
 	free(buffer);
+	if (!temp)
+	{
+		free(buf);
+		return (NULL);
+	}
 	return (temp);
 }
