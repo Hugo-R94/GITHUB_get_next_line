@@ -6,7 +6,7 @@
 /*   By: hrouchy <hrouchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:05:30 by hrouchy           #+#    #+#             */
-/*   Updated: 2025/05/19 13:06:38 by hrouchy          ###   ########.fr       */
+/*   Updated: 2025/05/22 15:53:24 by hrouchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # endif
 
 # ifndef OPEN_MAX
-#  define OPEN_MAX 1000
+#  define OPEN_MAX 1024
 # endif
 
 char	*get_next_line(int fd);

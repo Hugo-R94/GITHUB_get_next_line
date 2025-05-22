@@ -5,25 +5,26 @@
 #include "get_next_line.h"
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 10  // Change à 10000 si tu veux tester avec ce buffer
+#define BUFFER_SIZE 10
 #endif
 
-int main(void)
-{
-    int fd = open("read_error.txt", O_RDONLY);
-    if (fd < 0)
-    {
-        perror("open");
-        return 1;
-    }
-
-    char *line = NULL;
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("%s", line);
-        free(line);
-    }
-
-    close(fd);
-    return 0;
+int main()
+{ 
+	char *line;
+	char *line2;
+	char *line3;
+	int fd = open("empty.txt",O_RDONLY);
+	int fd2 = open(NULL, O_RDONLY);
+	int fd3 = open("txt.txt", O_RDONLY);
+	line = get_next_line(fd);
+	printf("%s\n",line);
+	line2 = get_next_line(fd2);
+	printf("%s\n",line2);
+	line3 = get_next_line(fd3);
+	printf("%s\n",line3);
+	free(line);
+	free(line2);
+	free(line3);
+	close(fd);
+	close(fd3);
 }
