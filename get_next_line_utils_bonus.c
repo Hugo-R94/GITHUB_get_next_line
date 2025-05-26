@@ -6,7 +6,7 @@
 /*   By: hrouchy <hrouchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:53:35 by hrouchy           #+#    #+#             */
-/*   Updated: 2025/05/20 11:39:02 by hrouchy          ###   ########.fr       */
+/*   Updated: 2025/05/26 10:46:12 by hrouchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,25 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
+// char	*ft_free(char *buffer, char *buf)
+// {
+// 	char	*temp;
+
+// 	temp = ft_strjoin(buffer, buf);
+// 	free(buffer);
+// 	if (!temp)
+// 	{
+// 		free(buf);
+// 		return (NULL);
+// 	}
+// 	return (temp);
+// }
+
 char	*ft_free(char *buffer, char *buf)
 {
 	char	*temp;
 
 	temp = ft_strjoin(buffer, buf);
 	free(buffer);
-	if (!temp)
-	{
-		free(buf);
-		return (NULL);
-	}
 	return (temp);
 }
